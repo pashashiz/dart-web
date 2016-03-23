@@ -4,5 +4,16 @@
 import 'dart:html';
 
 void main() {
-  querySelector('#output').text = 'Your Dart app is running.';
+  initToDoList();
+}
+
+void initToDoList() {
+  InputElement input = querySelector('#to-do-input');
+  input.onChange.listen((event) {
+    LIElement newToDo = new LIElement();
+    newToDo.text = input.value;
+    input.value = "";
+    UListElement toDoList = querySelector('#to-do-list');
+    toDoList.children.add(newToDo);
+  });
 }
